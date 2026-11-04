@@ -1349,11 +1349,7 @@ h1, h2, h3, h4, h5, h6 {
   line-height: 1.02;
   letter-spacing: -0.01em;
   margin-bottom: 22px;
-  max-width: 12ch;
-}
-
-.slide.anchor-right .slide-title {
-  max-width: 14ch;
+  text-wrap: balance;
 }
 
 /* Body copy: sentence case, mono, measured. Clarity over cleverness. */

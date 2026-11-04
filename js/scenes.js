@@ -74,11 +74,11 @@
     }
     draw(ctx) {
       for (const [a, b, s] of this.edges()) {
-        ctx.strokeStyle = rgba(WHITE, (0.05 + s * 0.06).toFixed(3));
+        ctx.strokeStyle = rgba(WHITE, (0.08 + s * 0.08).toFixed(3));
         ctx.lineWidth = 1;
         ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
       }
-      ctx.fillStyle = rgba(WHITE, 0.5);
+      ctx.fillStyle = rgba(WHITE, 0.62);
       for (const p of this.nodes) {
         ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, 6.2832); ctx.fill();
       }
@@ -113,7 +113,7 @@
     }
     draw(ctx) {
       for (const arc of this.arcs) {
-        ctx.strokeStyle = rgba(WHITE, 0.16);
+        ctx.strokeStyle = rgba(WHITE, 0.22);
         ctx.lineWidth = 1;
         ctx.setLineDash([7, 9]);
         ctx.lineDashOffset = arc.off;
@@ -123,7 +123,7 @@
         ctx.stroke();
         ctx.setLineDash([]);
       }
-      ctx.fillStyle = rgba(WHITE, 0.75);
+      ctx.fillStyle = rgba(WHITE, 0.85);
       for (const p of this.ports) ctx.fillRect(p.x - 2, p.y - 2, 4, 4);
     }
   }
@@ -144,7 +144,7 @@
           const x = (c / (this.cols - 1)) * this.w;
           const d = Math.abs(x - sweepX);
           const glow = Math.max(0, 1 - d / 130);
-          const a = 0.06 + glow * 0.5 + v * 0.04;
+          const a = 0.10 + glow * 0.5 + v * 0.04;
           ctx.fillStyle = rgba(WHITE, a.toFixed(3));
           const s = 1.4 + glow * 1.6;
           ctx.fillRect(x - s / 2, y - s / 2, s, s);
@@ -309,7 +309,7 @@
       }
       // film grain — drawn noise, never an SVG filter
       ctx.save();
-      ctx.globalAlpha = 0.055;
+      ctx.globalAlpha = 0.032;
       const ox = Math.floor(Math.random() * 128), oy = Math.floor(Math.random() * 128);
       ctx.drawImage(this.noise, -ox, -oy, this.w + 128, this.h + 128);
       ctx.restore();
