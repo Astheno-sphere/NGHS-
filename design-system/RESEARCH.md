@@ -69,7 +69,14 @@ Extract: the 10 principles as an evaluation framework; the translation method
 - `mmonteiro/designethics` is gone (404); design-ethics bucket otherwise empty.
 - Content-design bucket is thin beyond 18F — flagged, not padded.
 
-## Ingest order (proposed)
+## Ingest status
+
+COMPLETED 2026-11-05 — all six ingested, licenses verified, distilled into
+skills/god-tier-designer/SKILL.md as dated v2 sections (paraphrased method,
+never lifted text). Clones live at ~/workspace/design-ingest/ (not pushed —
+source material, not ours).
+
+Order ingested (as proposed):
 
 impeccable → awesome-design-md → beautiful-web-type → 18F/content-guide →
 Gesso-Build/skills → principles/Rams. Playbook: clone → digest → distill into

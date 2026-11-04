@@ -30,7 +30,7 @@
   
   /* Headings: Anton — heavy condensed grotesque (Arkham 2022 class) */
   --font-heading: 'Anton', 'Arial Narrow', sans-serif;
-  --font-serif: 'Anton', 'Arial Narrow', sans-serif;
+  --font-display: 'Anton', 'Arial Narrow', sans-serif;
   /* All UI + body copy: IBM Plex Mono (verified Arkham 2022 face) */
   --font-mono: 'IBM Plex Mono', 'Space Mono', 'JetBrains Mono', monospace;
   --font-body: 'IBM Plex Mono', 'Space Mono', monospace;
@@ -436,7 +436,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .slide-title {
-  font-family: var(--font-serif);
+  font-family: var(--font-display);
   font-size: clamp(2.1rem, 4vw, 3.4rem);
   font-weight: 700;
   color: #ffffff;
@@ -626,7 +626,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .section-title {
-  font-family: var(--font-serif);
+  font-family: var(--font-display);
   font-size: clamp(2.4rem, 4.5vw, 3.8rem);
   font-weight: 700;
   color: #ffffff;
@@ -870,7 +870,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .contact-title {
-  font-family: var(--font-serif);
+  font-family: var(--font-display);
   font-size: clamp(2.4rem, 4.5vw, 3.6rem);
   font-weight: 700;
   color: #ffffff;
@@ -1032,7 +1032,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .legals-section-title {
-  font-family: var(--font-serif);
+  font-family: var(--font-display);
   font-size: 1.6rem;
   color: #ffffff;
   letter-spacing: 1px;
@@ -1105,7 +1105,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .modal-title {
-  font-family: var(--font-serif);
+  font-family: var(--font-display);
   font-size: 1.6rem;
   color: #ffffff;
   letter-spacing: 1px;
