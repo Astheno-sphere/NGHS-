@@ -41,25 +41,27 @@
   <!-- Fullscreen Slide Deck -->
   <main class="slider-container" id="sliderDeck">
 
-    <!-- Slide 1 (Home_7) -->
-    <section class="slide active" id="slide-1" data-index="0">
-      <div class="slide-bg">
-        <video class="slide-video" autoplay loop muted playsinline preload="auto">
-          <source src="video/1.mp4" type="video/mp4">
-        </video>
-      </div>
-      <div class="slide-overlay"></div>
+    <!-- Coded B&W scenes: the visual layer. One canvas, five structural scenes,
+         crossfaded in sync with the deck. No stock, no color, never broken. -->
+    <canvas id="sceneCanvas" aria-hidden="true"></canvas>
+    <div class="vignette" aria-hidden="true"></div>
+    <div class="scanlines" aria-hidden="true"></div>
+
+    <!-- Slide 1 -->
+    <section class="slide anchor-left active" id="slide-1" data-index="0" data-scene="nodes">
       <div class="slide-content">
-        <h1 class="slide-title" data-cipher>SOURCING ACROSS BORDERS.<br>SUPPLYING BUSINESS IN NORWAY</h1>
-        <p class="slide-desc">
-          LABORATORY SUPPLIES · INDUSTRIAL COMPONENTS · WORKWEAR · SPECIALTY GOODS · HARD-TO-SOURCE ITEMS · CHEMICAL REAGENTS &amp; MUCH MORE
+        <div class="slide-marker reveal" style="--d:150ms"><span class="marker-index">01</span><span class="marker-sep">/</span><span class="marker-name">SOURCE</span></div>
+        <h1 class="slide-title" data-cipher>SOURCING ACROSS BORDERS.<br>SUPPLYING BUSINESS IN NORWAY.</h1>
+        <p class="slide-desc reveal" style="--d:300ms">
+          Laboratory supplies, industrial components, workwear, chemical reagents and hard-to-source items. Vetted, moved and cleared for Norwegian business.
         </p>
-        <div class="tag-tell-us" data-cipher>[ TELL US WHAT YOU NEED ]</div>
-        <div class="tagline-verified">SOURCED · VERIFIED · DELIVERED</div>
-        <button class="btn-chamfer btn-quote-trigger" data-cipher>REQUEST A QUOTE</button>
+        <div class="slide-actions reveal" style="--d:450ms">
+          <button class="btn-chamfer btn-quote-trigger" data-cipher>REQUEST A QUOTE</button>
+          <div class="tagline-verified">SOURCED · VERIFIED · DELIVERED</div>
+        </div>
       </div>
 
-      <!-- Slide 1 Bottom Line Marquee / Ticker -->
+      <!-- Destinations ticker -->
       <div class="slide-bottom-rule">
         <div class="slide-bottom-text">
           SHIPPING FOODSTUFF, SPICES, FMCG &amp; CONSUMER PACKED GOODS TO DENMARK, IRELAND, SWEDEN, UNITED ARAB EMIRATES, SAUDI ARABIA, UNITED STATES, AFRICA &amp; AUSTRALIA
@@ -67,71 +69,59 @@
       </div>
     </section>
 
-    <!-- Slide 2 (Home_8) -->
-    <section class="slide" id="slide-2" data-index="1">
-      <div class="slide-bg">
-        <video class="slide-video" autoplay loop muted playsinline preload="auto">
-          <source src="video/2.mp4" type="video/mp4">
-        </video>
-      </div>
-      <div class="slide-overlay"></div>
+    <!-- Slide 2 -->
+    <section class="slide anchor-right" id="slide-2" data-index="1" data-scene="routes">
       <div class="slide-content">
-        <h2 class="slide-title" data-cipher>DISTANCE SHOULDN'T DECIDE WHAT A NORWEGIAN BUSINESS CAN SOURCE.</h2>
-        <p class="slide-desc">
-          MOST SUPPLIERS ARE ONE COUNTRY AWAY. FINDING THEM ISN'T THE HARD PART - VETTING THEM, MOVING THE GOODS, AND CLEARING THE BORDER IS. THAT'S THE PART THAT STALLS SMALL BUYERS. NGHS RUNS THAT PART.
+        <div class="slide-marker reveal" style="--d:150ms"><span class="marker-index">02</span><span class="marker-sep">/</span><span class="marker-name">THE PROBLEM</span></div>
+        <h2 class="slide-title" data-cipher>DISTANCE SHOULDN'T DECIDE WHAT YOU CAN SOURCE.</h2>
+        <p class="slide-desc reveal" style="--d:300ms">
+          Most suppliers are one country away. Finding them isn't the hard part. Vetting them, moving the goods and clearing the border is. That part stalls small buyers. NGHS runs that part.
         </p>
-        <button class="btn-chamfer btn-quote-trigger" data-cipher>REQUEST A QUOTE</button>
+        <div class="slide-actions reveal" style="--d:450ms">
+          <button class="btn-chamfer btn-quote-trigger" data-cipher>REQUEST A QUOTE</button>
+        </div>
       </div>
     </section>
 
-    <!-- Slide 3 (Home_9) -->
-    <section class="slide" id="slide-3" data-index="2">
-      <div class="slide-bg">
-        <video class="slide-video" autoplay loop muted playsinline preload="auto">
-          <source src="video/3.mp4" type="video/mp4">
-        </video>
-      </div>
-      <div class="slide-overlay"></div>
+    <!-- Slide 3 -->
+    <section class="slide anchor-left" id="slide-3" data-index="2" data-scene="lattice">
       <div class="slide-content">
-        <h2 class="slide-title" data-cipher>EQUITY-CENTRIC SOURCING STRATEGIES, ETHICAL SUPPLY CHAIN GOVERNANCE</h2>
-        <p class="slide-desc">
-          SUPPLY CHAIN SURVEILLANCE, PROCUREMENT INTEGRITY, FREIGHT FORWARDING COMPLIANCE, LAST-MILE PRECISION, ROOTING OUT UNFAIR PRACTICES AT EVERY STAGE. EVERY LINK STRICTLY MONITORED.
+        <div class="slide-marker reveal" style="--d:150ms"><span class="marker-index">03</span><span class="marker-sep">/</span><span class="marker-name">GOVERNANCE</span></div>
+        <h2 class="slide-title" data-cipher>EVERY LINK MONITORED.</h2>
+        <p class="slide-desc reveal" style="--d:300ms">
+          Procurement integrity, freight-forwarding compliance, last-mile precision. We root out unfair practices at every stage. Every link strictly monitored.
         </p>
-        <button class="btn-chamfer btn-quote-trigger" data-cipher>REQUEST A QUOTE</button>
+        <div class="slide-actions reveal" style="--d:450ms">
+          <button class="btn-chamfer btn-quote-trigger" data-cipher>REQUEST A QUOTE</button>
+        </div>
       </div>
     </section>
 
-    <!-- Slide 4 (Home_11) -->
-    <section class="slide" id="slide-4" data-index="3">
-      <div class="slide-bg">
-        <video class="slide-video" autoplay loop muted playsinline preload="auto">
-          <source src="video/4.mp4" type="video/mp4">
-        </video>
-      </div>
-      <div class="slide-overlay"></div>
+    <!-- Slide 4 -->
+    <section class="slide anchor-right" id="slide-4" data-index="3" data-scene="terrain">
       <div class="slide-content">
-        <h2 class="slide-title" data-cipher>CULTIVATING AGRO-LOGISTIC EXCELLENCE</h2>
-        <p class="slide-desc">
-          HARNESSING INDIGENOUS VARIETIES, AN EXTENSIVE PRODUCERS-SUPPLIERS NETWORK, GEOGRAPHICALLY DIVERSE SOURCING, PRESERVING TRADITION, CULTURE, AND DISTINCT TASTES WITH G.I. TAGGED PRODUCE/PRODUCTS
+        <div class="slide-marker reveal" style="--d:150ms"><span class="marker-index">04</span><span class="marker-sep">/</span><span class="marker-name">AGRO-LOGISTICS</span></div>
+        <h2 class="slide-title" data-cipher>FROM SOIL TO SHELF.</h2>
+        <p class="slide-desc reveal" style="--d:300ms">
+          G.I.-tagged produce, indigenous varieties and an extensive producer network across geographically diverse origins. Tradition, culture and taste, preserved in transit.
         </p>
-        <button class="btn-chamfer btn-quote-trigger" data-cipher>REQUEST A QUOTE</button>
+        <div class="slide-actions reveal" style="--d:450ms">
+          <button class="btn-chamfer btn-quote-trigger" data-cipher>REQUEST A QUOTE</button>
+        </div>
       </div>
     </section>
 
-    <!-- Slide 5 (Home_12) -->
-    <section class="slide" id="slide-5" data-index="4">
-      <div class="slide-bg">
-        <video class="slide-video" autoplay loop muted playsinline preload="auto">
-          <source src="video/5.mp4" type="video/mp4">
-        </video>
-      </div>
-      <div class="slide-overlay"></div>
+    <!-- Slide 5 -->
+    <section class="slide anchor-left" id="slide-5" data-index="4" data-scene="thermal">
       <div class="slide-content">
-        <h2 class="slide-title" data-cipher>COLD CHAIN ASSURANCE FOR PERISHABLES</h2>
-        <p class="slide-desc">
-          THROUGH ADVANCED TEMPERATURE-CONTROLLED LOGISTICS AND REAL-TIME MONITORING, WE GUARANTEE THAT PERISHABLE GOODS REACH THEIR DESTINATION IN OPTIMAL CONDITION, MINIMIZING LOSSES AND ENSURING QUALITY.
+        <div class="slide-marker reveal" style="--d:150ms"><span class="marker-index">05</span><span class="marker-sep">/</span><span class="marker-name">COLD CHAIN</span></div>
+        <h2 class="slide-title" data-cipher>COLD, UNBROKEN.</h2>
+        <p class="slide-desc reveal" style="--d:300ms">
+          Temperature-controlled logistics with real-time monitoring. Perishables arrive in optimal condition. Losses minimized, quality ensured.
         </p>
-        <button class="btn-chamfer btn-quote-trigger" data-cipher>REQUEST A QUOTE</button>
+        <div class="slide-actions reveal" style="--d:450ms">
+          <button class="btn-chamfer btn-quote-trigger" data-cipher>REQUEST A QUOTE</button>
+        </div>
       </div>
     </section>
 
@@ -144,9 +134,9 @@
       </div>
       <div class="hud-dots-list">
         <div class="hud-dot active" data-target="0" title="Source"></div>
-        <div class="hud-dot" data-target="1" title="How It Works"></div>
-        <div class="hud-dot" data-target="2" title="Proofs"></div>
-        <div class="hud-dot" data-target="3" title="Sectors"></div>
+        <div class="hud-dot" data-target="1" title="The Problem"></div>
+        <div class="hud-dot" data-target="2" title="Governance"></div>
+        <div class="hud-dot" data-target="3" title="Agro-Logistics"></div>
         <div class="hud-dot" data-target="4" title="Cold Chain"></div>
       </div>
     </div>
@@ -155,18 +145,11 @@
   <!-- Site Footer -->
   <footer class="site-footer">
     <div class="footer-legal">
-      <span class="footer-text-slide1">
+      <span>
         © 2024–2026 Norden Global Handelhus. All Rights Reserved.
-        <a href="legals.html#brand-assets" class="footer-legal-link">Brand Assets</a> | 
-        <a href="legals.html#terms" class="footer-legal-link">Terms Of Service</a> | 
-        <a href="legals.html#privacy" class="footer-legal-link">Privacy Policy</a> | 
-        <a href="legals.html#cookies" class="footer-legal-link">Cookie Preferences</a>
-      </span>
-      <span class="footer-text-normal" style="display: none;">
-        © 2024–2026 Norden Global Handelhus. All Rights Reserved.
-        <a href="legals.html#brand-assets" class="footer-legal-link">Brand Assets</a> | 
-        <a href="legals.html#terms" class="footer-legal-link">Terms Of Service</a> | 
-        <a href="legals.html#privacy" class="footer-legal-link">Privacy Policy</a> | 
+        <a href="legals.html#brand-assets" class="footer-legal-link">Brand Assets</a> |
+        <a href="legals.html#terms" class="footer-legal-link">Terms Of Service</a> |
+        <a href="legals.html#privacy" class="footer-legal-link">Privacy Policy</a> |
         <a href="legals.html#cookies" class="footer-legal-link">Cookie Preferences</a>
       </span>
     </div>
@@ -238,6 +221,7 @@
 
   <!-- Scripts -->
   <script src="js/cipher.js"></script>
+  <script src="js/scenes.js"></script>
   <script src="js/slides.js"></script>
   <script src="js/app.js"></script>
 </body>

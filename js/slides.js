@@ -1,6 +1,13 @@
 /**
- * NGHS - Fullscreen Presentation Slider Deck
- * Original Smooth Opacity & Scale Deck Animation
+ * NGHS - Fullscreen Presentation Slider Deck (v2, 2026-11-05)
+ *
+ * One master timeline per transition — the synchronicity system:
+ *   t=0    outgoing slide fades/scales out (600ms)
+ *   t=150  scene engine crossfades to the incoming slide's scene (700ms)
+ *   t=600  incoming slide fades in (750ms); HUD counter swaps + scrambles;
+ *          headline decode starts, resolving as the fade completes
+ *   t=750+ marker/desc/actions stagger in on CSS --d delays (see main.css)
+ *   t=1400 input unlocks
  */
 
 class SlideDeckController {
@@ -12,18 +19,20 @@ class SlideDeckController {
     this.totalSlides = this.slides.length;
     this.currentIndex = 0;
     this.isTransitioning = false;
-    this.transitionDuration = 1400; // ms: total transition window (fadeOut + fadeIn)
+    this.transitionDuration = 1400; // ms: the full lock window
     this.lastTransitionTime = 0;
     this.accumulatedDelta = 0;
     this.wheelThreshold = 45;
+
+    // Staged timeline offsets (ms)
+    this.T_SCENE = 150;
+    this.T_FADE_IN = 600;
 
     // UI elements
     this.downArrowBtn = document.querySelector('.scroll-down-btn');
     this.hudCurrent = document.querySelector('.hud-current');
     this.hudTotal = document.querySelector('.hud-total');
     this.hudDots = document.querySelectorAll('.hud-dot');
-    this.footerLegalSlide1 = document.querySelector('.footer-text-slide1');
-    this.footerLegalNormal = document.querySelector('.footer-text-normal');
 
     this.init();
   }
@@ -31,22 +40,19 @@ class SlideDeckController {
   init() {
     if (this.totalSlides === 0) return;
 
-    // Activate initial slide
     this.slides.forEach((slide, idx) => {
-      if (idx === 0) {
-        slide.classList.add('active');
-        const initialVideo = slide.querySelector('.slide-video');
-        if (initialVideo) {
-          initialVideo.play().catch(() => {});
-        }
-      } else {
-        slide.classList.remove('active', 'leaving');
-      }
+      slide.classList.toggle('active', idx === 0);
+      slide.classList.remove('leaving');
     });
 
     this.updateHUD();
 
-    // Event listeners
+    // Opening beat: decode the hero headline once the page settles.
+    const firstTitle = this.slides[0].querySelector('.slide-title');
+    if (firstTitle && window.cipherEngine) {
+      window.cipherEngine.decodeReveal(firstTitle, 450);
+    }
+
     this.bindWheelEvents();
     this.bindKeyboardEvents();
     this.bindTouchEvents();
@@ -177,56 +183,46 @@ class SlideDeckController {
     const currentSlide = this.slides[this.currentIndex];
     const targetSlide = this.slides[targetIndex];
 
-    const fadeOutDuration = 600; // ms: current slide smoothly drops from 100% to 0%
-    const fadeInDuration = 750;  // ms: next slide smoothly rises from 0% to 100%
-
-    // Stage 1: Fade out current slide from 100% to 0% opacity
+    // t=0: outgoing slide leaves.
     currentSlide.classList.remove('active');
     currentSlide.classList.add('leaving');
 
+    // t=150: the scene crossfades underneath the outgoing fade.
     setTimeout(() => {
-      // Stage 2: Target slide fades in from 0% to 100% opacity
+      const scene = targetSlide.dataset.scene;
+      if (scene && window.sceneEngine) {
+        window.sceneEngine.goTo(scene);
+      }
+    }, this.T_SCENE);
+
+    // t=600: incoming slide activates — fade-in, HUD, decode all fire together.
+    setTimeout(() => {
       currentSlide.classList.remove('leaving');
 
       this.currentIndex = targetIndex;
-      this.updateHUD();
+      this.updateHUD(true);
 
-      // Toggle slide-specific footer copyright if specified
-      if (this.footerLegalSlide1 && this.footerLegalNormal) {
-        if (this.currentIndex === 0) {
-          this.footerLegalSlide1.style.display = 'inline';
-          this.footerLegalNormal.style.display = 'none';
-        } else {
-          this.footerLegalSlide1.style.display = 'none';
-          this.footerLegalNormal.style.display = 'inline';
-        }
-      }
-
-      // Activate target slide for smooth 0% -> 100% entry
       targetSlide.classList.remove('leaving');
       targetSlide.classList.add('active');
 
-      const targetVideo = targetSlide.querySelector('.slide-video');
-      if (targetVideo) {
-        targetVideo.play().catch(() => {});
-      }
-
-      // Trigger decrypt cipher animation on main title of new slide
       const titleEl = targetSlide.querySelector('.slide-title');
       if (titleEl && window.cipherEngine) {
-        window.cipherEngine.decodeReveal(titleEl, 120);
+        // speed 28 x 20 iterations ~= 640ms: resolves as the 750ms fade completes.
+        window.cipherEngine.scramble(titleEl, { speed: 28, iterations: 20 });
       }
 
       setTimeout(() => {
         this.isTransitioning = false;
-      }, fadeInDuration);
-
-    }, fadeOutDuration);
+      }, this.transitionDuration - this.T_FADE_IN);
+    }, this.T_FADE_IN);
   }
 
-  updateHUD() {
+  updateHUD(scramble = false) {
     if (this.hudCurrent) {
       this.hudCurrent.innerText = `0${this.currentIndex + 1}`;
+      if (scramble && window.cipherEngine) {
+        window.cipherEngine.scramble(this.hudCurrent, { speed: 24, iterations: 8 });
+      }
     }
     if (this.hudTotal) {
       this.hudTotal.innerText = `0${this.totalSlides}`;

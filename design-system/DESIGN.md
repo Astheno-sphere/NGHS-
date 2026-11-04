@@ -148,8 +148,10 @@ token. (Gesso `heavy-box-shadow` / `dark-glow` gates apply.)
   fixed-width.
 - Anton rendering / headline reflow never seen on a live page (verification
   environment blocked); needs human eyes or a deployed preview.
-- Coded B&W canvas scenes (Phase 6 of the rebuild spec) not yet built —
-  stock video still in place behind the grayscale law.
+- Coded B&W canvas scenes (Phase 6) BUILT 2026-11-05 — five structural
+  scenes (nodes/routes/lattice/terrain/thermal) in js/scenes.js, video
+  removed from the main page. Composition deterministic, but never seen
+  on a live page — visual verification still pending.
 - Subpages (contact, legals, on-field, product) not yet rebuilt to this
   system.
 - `transition: all` instances (5) predate the gates — cleanup queued, not
